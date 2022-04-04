@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com"> -->
+
+<style>
+</style>
+
+
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G**gle Imaginaries</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="extension.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div style="background-color: #f2f2f2; padding: 20px;">
+
+      <!-- <h1 style="text-align: center">G**gle Imaginaries</h1> -->
+      <!-- <img style="margin-left:25%; scale:65%;" src="icon.png"/>  -->
+
+
+
+
+
+      <div class="wrapper" id="wrapper">
+          
+        <div id="block1">
+          <div class="center">
+            <img style="width:250px" src="images/icon_2.png"/><br>
+          </div>
+        </div>
+
+        <div id="block2">
+          <p style="text-align: right; font-size: 20px"> &#9432; </p>
+        </div>
+          
+      </div>    
+    <div id="main_page" style="display: block">
+
+        <br><br><br><br><br>
+        <p style="text-align: center; font-size: 13px;" id="intro_short_text">  A (somewhat) efficient tool to audit the representational<br> biases in Google Image Search results </p>
+
+
+
+        <div>
+          <p style="text-align: center" class="queryCookie" id="queryCookie"><b> Image Search Query </b> <br> <input style="width: 180px;" type="text" id="queryCookie_text" name="queryCookie_text" value=""> </p>
+          <input TYPE="button" NAME="button" ID="results_button" Value="Check Representation in Search Results " onClick="processQuery()" />
+
+          <p id="loading" style="display:none;"> </p>
+        </div>
+        <div id="results_section" style="display: none;">
+
+
+            <p style="text-align: center; font-size:15px" id="results"> </p>
+          <div class="slider">
+                <img style="display:none; width:300px;" src="images/spectrum.png"  id="results-slide-2"/>
+                <img style="scale:60%; display:none; padding: 0px; border-radius: 0px;" src="images/circle.png" class="over" id="results-slide-3"/> 
+
+                <span class="slider-tooltiptext" id="slider-tooltiptext">Extreme left values of this scale imply under-representation of group 1 compared to group 2 and extreme right values imply over-representation of group 1 (group information below; default groups are women-group 1- and men-group 2)</span><br><br><br><br><br>
+                <span class="slider-tooltiptext-2" id="slider-tooltiptext-2">Score 0 implies balanced search results</span>
+
+           </div>
+        </div>
+
+
+    <br><br><br>
+
+      <p style="text-align: center;" class="repr_samples" id="repr_samples"> <a href="http://localhost:5000/control_set">View/Edit Groups and Representative Samples</b></a> </p>
+      <p style="text-align: center" > <a class="queryScores" id="queryScores" href="http://localhost:5000/queryScores">Previously Computed Representation Scores</b></a> </p>
+
+      <!-- <p style="text-align: center" class="repr_samples" id="repr_samples"> <a ID="button_control_set">View/Edit Groups and Representative Samples</b></a> </p> -->
+
+<!--         <span class="control_set_tooltiptext" id="control_set_tooltiptext">The default samples presented below use gender representative images. <b> Group 1 corresponds to images of women and Group 2 corresponds to images of men. </b> The representation score, in this case, computes the relative under/over-representation of women in the search results.</span><br><br><br><br>
+
+      <p style="text-align: center; display:none; font-size:15px;" id="group_1_text"> Group 1 Images </p>
+      <div id='container_1' style="padding: 0px;">      </div>
+      <p style="text-align: center; display:none; font-size:15px" id="group_2_text"> Group 2 Images </p>
+      <div id='container_2' style="padding: 0px;">      </div>      
+
+ -->
+
+
+      <p style="text-align: center" id="userId">  </p>
+
+    </div>
+
+    <div id="info_page" style="display: none">
+        <br><br><br><br><br>
+        <br>
+
+      <p style="text-align: left;">
+
+      <b>Google Images mediates how we see and imagine much of the world. For many queries, the top image results do not match offline demographics, often incorporating racist and sexist stereotypes (<a id="info_link" href="https://dl.acm.org/doi/10.1145/2702123.2702520">Kay et al. 2015</a>, <a id="info_link" href="https://nyupress.org/9781479837243/algorithms-of-oppression/">Noble 2018</a>). This plug-in audits the representation in Google Image results by finding how the results differ from your imagination of "diversity".</b> <br> <br>
+
+      Search engines like Google are more than simple tools for accessing information; they transform how we experience the world. According to <a id="info_link" href="https://warwick.ac.uk/fac/arts/english/currentstudents/undergraduate/modules/fictionnownarrativemediaandtheoryinthe21stcentury/manifestly_haraway_----_a_cyborg_manifesto_science_technology_and_socialist-feminism_in_the_....pdf">Donna Haraway</a>, we have become cyborgs, or "hybrid[s] of machine and organism, a creature of social reality as well as a creature of fiction." We now rely on search engines to access much of our world—our umwelt—and as such these tools are less tools than prosthetics. In Google Images in particular, we obtain an artificial eye.<br><br>
+
+      Yet this cyborg vision is structured according to what Haraway calls the "informatics of domination," a new way of ordering the world that reduces social and natural life to information and optimizes it according to the logics of <a id="info_link" href="https://onlinelibrary.wiley.com/doi/full/10.1111/1467-9566.13097">capitalism and colonialism</a>. The effects of these logics are felt in the problem of algorithmic bias, or the unequal outcomes of algorithmically mediated decision-making, which more often than not conform with existing systems of racism, patriarchy, heterosexism, and the like. On Google Images, searches for many professions have been shown to be gender-biased, not representing the contemporary demographics of such professions but rather internalizing and scaling up longstanding gender stereotypes (<a id="info_link" href="https://dl.acm.org/doi/10.1145/2702123.2702520">Kay et al. 2015</a>; e.g., search for "CEO USA" and observe the number of images of women or Black people in the top results).<br><br>
+
+      These outcomes, while novel in their algorithmic scale and production, are like previous iterations in that they are fundamentally driven by humans. Haraway points out that "we are not dealing with a technological determinism, but with a historical system depending on structured relations among people." Any attempt to change the system must target these human relations, and one option, following Kara Keeling’s vision of a <a id="info_link" href="https://www.jstor.org/stable/43653577">“Queer OS”</a>, is to queer them. “Queer OS "understands queer as naming an orientation toward various and shifting aspects of existing reality and the social norms they govern, such that it makes available pressing questions about, eccentric and/or unexpected relationships in, and possibly alternatives to those social norms."<br><br>
+
+      This tool applies the principles of Queer OS to Google Images. Whereas Google Images displays an already ordered set of search results for a user's query, this tool also asks the user to create a sample of people that matches the diversity of people they want to see represented in the query results. One can call this an “unbiased” sample, but we recognize that there is no such thing as an “unbiased” state; instead, the user can create the world they want, whether that matches what we see today or what we might want to see in the future. With this sample, the tool computes a score that quantifies how the extent of representational bias in the image results, using the algorithm of <a id="info_link" href="https://dl.acm.org/doi/abs/10.1145/3447548.3467433">Keswani, Celis (2021)</a>.<br><br>
+
+      Please contact <a id="info_link" href="https://vijaykeswani.github.io">Vijay Keswani</a> for any questions or feedback on this tool.<br><br>
+
+      <a id="back_main_page" style="padding: 3px 1px; color: brown"> Back to Main Page </a><br><br>
+      <a style="padding: 3px 1px; color: brown" href="http://localhost:5000/about"> Read more about this tool </a>
+      </p>
+    </div>
+  </div>
+  <script src="repcheck.js"></script>
+
+
+  </body>
+</html>

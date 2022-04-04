@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com"> -->
+<!-- 
+<style>
+
+
+</style> -->
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G**gle Imaginaries</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/control_set.css" rel="stylesheet" />
+  </head>
+  <body class="center">
+    <div>
+
+    <div class="center">
+      <img style="width:250px" src="/static/icon_2.png"/>
+    </div>
+      <br>
+      <p style="text-align: center" class="repr_samples" id="repr_samples"> View/Edit Groups and Representative Samples</b></p>
+
+        <!-- <span class="control_set_tooltiptext" id="control_set_tooltiptext">The default samples presented below use gender representative images. <b> Group 1 corresponds to images of women and Group 2 corresponds to images of men. </b> The representation score, in this case, computes the relative under/over-representation of women in the search results.</span><br><br> -->
+
+       <span class="control_set_tooltiptext" id="control_set_tooltiptext">  This task mimics the labor of "ghost workers" around the world who label images as part of a low-paying, precarious “gig” job. Their labor produces what in AI is called “ground truth,” pointing to the construction of truth through the extractivist and exploitative logics of late capitalism—outsourcing, efficiency, and mass production. "Ground truth" takes on the imprint of this process—it incorporates the various perspectives of these ghost workers. Here we give up control of this key stage in knowledge production, disrupting the traditional power dynamics of representation in machine learning. Now this is in the hands of the user, who can see if the algorithm sees the world as they do.</span><br><br>
+
+
+      <input TYPE="button" NAME="button" ID="default_gender" class="default_gender" Value="Use default gender representative images"/>
+
+
+      <p style="text-align: center; font-size:20px;" id="group_1_text"> Group 1 Images </p>
+      <div id='container_1' style="padding: 0px;">      </div>
+
+      <form id = "upload_images_1" action = "" method = "POST" enctype = "multipart/form-data">
+         <input id = "file_upload_1" type = "file" name = "file" multiple accept="image/*" onchange='submitImages_1();'/>
+         <input type = "submit" style="display:none;"/>
+      </form>
+
+      <input TYPE="button" NAME="button" ID="file_upload_1_new_Btn" class="file_upload_1_new_Btn" Value="Upload new set of Group 1 images"/>
+
+      <br><br>
+      <p style="text-align: center; font-size:20px" id="group_2_text"> Group 2 Images </p>
+      <div id='container_2' style="padding: 0px;">      </div>      
+
+      <form id = "upload_images_2" action = "" method = "POST" enctype = "multipart/form-data">
+         <input id = "file_upload_2" type = "file" name = "file" multiple accept="image/*" onchange='submitImages_2();'/>
+         <input type = "submit" style="display:none;"/>
+      </form>
+
+      <input TYPE="button" NAME="button" ID="file_upload_2_new_Btn" class="file_upload_2_new_Btn" Value="Upload new set of Group 2 images"/>
+
+      <p style="text-align: center"> <a style="padding: 3px 2px; color: brown" id="about" class="about" href="http://localhost:5000/about"> Read more about this tool </a> </p>
+
+
+      <p style="text-align: center" id="userId">  </p>
+
+
+    </div>
+
+    <script src="/static/js/control_set.js"></script>
+
+    <!-- <script src="printResults.js"></script> -->
+  </body>
+</html>

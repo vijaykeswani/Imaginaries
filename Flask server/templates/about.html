@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com"> -->
+<!-- 
+<style>
+
+
+</style> -->
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G**gle Imaginaries</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/control_set.css" rel="stylesheet" />
+  </head>
+  <body class="center">
+    <div>
+
+    <div class="center">
+      <img style="width:250px" src="/static/icon_2.png"/>
+    </div>
+      <br>
+      <p style="text-align: center" class="repr_samples" id="repr_samples"> <a ID="button_control_set">About this tool</b></a> </p>
+
+        <!-- <span class="control_set_tooltiptext" id="control_set_tooltiptext">The default samples presented below use gender representative images. <b> Group 1 corresponds to images of women and Group 2 corresponds to images of men. </b> The representation score, in this case, computes the relative under/over-representation of women in the search results.</span><br><br> -->
+
+      <b>Google Images mediates how we see and imagine much of the world. For many queries, the top image results do not match offline demographics, often incorporating racist and sexist stereotypes (<a id="info_link" href="https://dl.acm.org/doi/10.1145/2702123.2702520">Kay et al. 2015</a>, <a id="info_link" href="https://nyupress.org/9781479837243/algorithms-of-oppression/">Noble 2018</a>). This plug-in audits the representation in Google Image results by finding how the results differ from your imagination of "diversity".</b> <br> <br>
+
+      Search engines like Google are more than simple tools for accessing information; they transform how we experience the world. According to <a id="info_link" href="https://warwick.ac.uk/fac/arts/english/currentstudents/undergraduate/modules/fictionnownarrativemediaandtheoryinthe21stcentury/manifestly_haraway_----_a_cyborg_manifesto_science_technology_and_socialist-feminism_in_the_....pdf">Donna Haraway</a>, we have become cyborgs, or "hybrid[s] of machine and organism, a creature of social reality as well as a creature of fiction." We now rely on search engines to access much of our world—our umwelt—and as such these tools are less tools than prosthetics. In Google Images in particular, we obtain an artificial eye.<br><br>
+
+      Yet this cyborg vision is structured according to what Haraway calls the "informatics of domination," a new way of ordering the world that reduces social and natural life to information and optimizes it according to the logics of <a id="info_link" href="https://onlinelibrary.wiley.com/doi/full/10.1111/1467-9566.13097">capitalism and colonialism</a>. The effects of these logics are felt in the problem of algorithmic bias, or the unequal outcomes of algorithmically mediated decision-making, which more often than not conform with existing systems of racism, patriarchy, heterosexism, and the like. On Google Images, searches for many professions have been shown to be gender-biased, not representing the contemporary demographics of such professions but rather internalizing and scaling up longstanding gender stereotypes (<a id="info_link" href="https://dl.acm.org/doi/10.1145/2702123.2702520">Kay et al. 2015</a>; e.g., search for "CEO USA" and observe the number of images of women or Black people in the top results).<br><br>
+
+      These outcomes, while novel in their algorithmic scale and production, are like previous iterations in that they are fundamentally driven by humans. Haraway points out that "we are not dealing with a technological determinism, but with a historical system depending on structured relations among people." Any attempt to change the system must target these human relations, and one option, following Kara Keeling’s vision of a <a id="info_link" href="https://www.jstor.org/stable/43653577">“Queer OS”</a>, is to queer them. “Queer OS "understands queer as naming an orientation toward various and shifting aspects of existing reality and the social norms they govern, such that it makes available pressing questions about, eccentric and/or unexpected relationships in, and possibly alternatives to those social norms."<br><br>
+
+      This tool applies the principles of Queer OS to Google Images. Whereas Google Images displays an already ordered set of search results for a user's query, this tool also asks the user to create a sample of people that matches the diversity of people they want to see represented in the query results. One can call this an “unbiased” sample, but we recognize that there is no such thing as an “unbiased” state; instead, the user can create the world they want, whether that matches what we see today or what we might want to see in the future. With this sample, the tool computes a score that quantifies how the extent of representational bias in the image results, using the algorithm of <a id="info_link" href="https://dl.acm.org/doi/abs/10.1145/3447548.3467433">Keswani, Celis (2021)</a>.<br><br>
+
+      <b>Q: How does this tool measure representation?</b><br>
+      This tool quantifies representation with respect to the representative examples provided by the user (or using the given default ones). Suppose the set of images in the results is denoted using <i>S</i>. Say <i>U</i> denotes the set of images of people who are usually underrepresented in the image results and <i>V</i> denotes the set of images of people who are usually overrepresented in the image results. For instance, is <i>S</i> is the set of images of CEOs, then one choice for <i>U</i> is the images of women and <i>V</i> is the images of men. In this case, the goal of the tool is to efficiently compute (|<i>U</i>| - |<i>V</i>|)/|<i>S</i>|.<br>
+
+      The simplest way to compute this score is to simply label the images in <i>S</i> with the attribute label and then compute the score. However, this task becomes difficult for the user when the size of <i>S</i> is large or when this score needs to be computed for multiple image search query results. This is why using examples help. By choosing images of group 1 to correspond to images of the underrepresented group and images of group 2 to correspond to images of the overrepresented group, we provide an efficient algorithm to compute an approximation to this score for any search query.<br><br>
+
+
+      <b>Q: What kind of biases can this tool analyze?</b><br>
+      This tools analyzes representational biases, i.e. whether one demographic group suffers from reduced representation compared to other groups. As mentioned before, Google Image results have been consistently shown to under-represent minorities in their search results, propagating a biased view of the demographics in different sectors of life. This tool aims to provide an explicit measure to quantify this kind of bias. <br>
+
+      While our tool can measure the above kind of representational bias, it may not always be able to handle <i>qualitative biases</i>, such as search queries where images of women are unncessarily sexualized. We hope to explore extensions of our approach or representative examples that can assess such qualitative disparities as part of future work.<br><br>
+
+      <b>Q: How are the default examples for gender and skin-tone selected?</b><br>
+      While any set of images corresponding to an attribute like gender or skin-tone can be used to create the representative example set, some images are intuitively more appropriate for differenting between images with different attributes. In <a id="info_link" href="https://dl.acm.org/doi/abs/10.1145/3447548.3467433">our paper</a>, we provide an algorithm that can select these appropriate images using an <i>adaptive approach</i>. We apply this adaptive approach to select the default images for gender and skin-tone, and refer you to the paper for more details about this algorithm.<br>
+
+      At the same time, it is important to note that there is a possibility that the default representative sets can be stereotypically-biased. For example, aiming to differentiate between images of men and women may exclude images of people with non-binary gender. Given this possibility, we strongly encourage the hand-curation of these sets and, hence, provide the users with an option to construct their own representative sets for any attribute of their choice.<br><br>
+
+      <b>Q: Are any pretrained image models used in this algorithm?</b>      <br>
+      Yes, we use the VGG-16 model, pretrained on the Imagenet dataset, to extract features for the images. However, we are aware of <a id="info_link" href="https://venturebeat.com/2020/11/03/researchers-show-that-computer-vision-algorithms-pretrained-on-imagenet-exhibit-multiple-distressing-biases/">the issues with errors and lack of diversity in the Imagenet database</a>. Since we compare features of different images in the search results to the features of images in the representative sets, our hope is that these errors do not significantly affect the results. However, if you observe any negative results related to Imagenet bias or have suggestions regarding any alternative pre-trained models, please let us know.<br><br>
+
+      <b>Q: Why is the analysis limited to binary groups?</b><br>
+      The analysis is limited to binary groups for simplicity. Using binary comparison, we can directly compare a minority group to a majority group and quantify the relative extent of under-representation of the minority group. However, the use of binary comparison should not limit the use of tools to measure under-representation of non-binary categorical groups. For example, one can still use the tool to analyze representation of transgender individuals in image search by appropriately choosing the representative sets. <br><br>
+
+      <b>Q: What part of the images are used to compute this score?</b><br>
+      We crop the faces from the images to compare it to the images in the representative set. While this can ignore certain parts of the background that are relevant in analyzing representation biases (such as, whether the outfit of the individual etc.), we observe that removing background in general reduces noises in the computed scores and increases accuracy.<br><br>
+
+      <b>Q: Who developed this tool? </b><br>
+      This tool was developed and is maintained by Vijay Keswani and Spencer Kaplan. <br><br>
+
+
+      <p style="text-align: center" id="userId">  </p>
+
+
+    </div>
+  </body>
+</html>

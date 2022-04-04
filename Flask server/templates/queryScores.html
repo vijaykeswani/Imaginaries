@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com"> -->
+<!-- 
+<style>
+
+
+</style> -->
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G**gle Imaginaries</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/control_set.css" rel="stylesheet" />
+  </head>
+  <body class="center">
+    <div>
+
+    <div class="center">
+      <img style="width:250px" src="/static/icon_2.png"/>
+    </div>
+      <br>
+      <p style="text-align: center" class="repr_samples" id="repr_samples">Representation results for all queries processed using this tool </b></p>
+
+       <span class="control_set_tooltiptext" id="control_set_tooltiptext">  This page presents the computed representation score for all queries processed using this tool. The table below presents the user-ID of the person who entered the query (anonymized and randomly assigned), the query name, the attribute assigned to the representative set, and the computed representation score.<br><br> Our goal with providing a public table of all results is to bring to light the lack of representation in different Google results, as discovered by the users, and force Google to address this issue in a public manner.</span><br><br>
+
+
+        <table id="results_table" class="results_table">
+<!--           <tr>
+            <th>User ID</th>
+            <th>Query</th>
+            <th>Attribute Name</th>
+            <th>Computed representation score</th>
+          </tr>
+          <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+            <td>Germany</td>
+          </tr>
+ -->        </table>
+
+
+      <p style="text-align: center"> <a style="padding: 3px 2px; color: brown" id="about" class="about" href="http://localhost:5000/about"> Read more about this tool </a> </p>
+
+
+      <p style="text-align: center" id="userId">  </p>
+
+
+    </div>
+
+    <script src="/static/js/control_set.js"></script>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:5000/getAllQueryScores", true);
+        xhr.onreadystatechange = function() {
+          if (this.readyState == 4) {
+            var res = this.responseText;
+            document.getElementById('results_table').innerHTML = res;
+          }
+        };
+
+        xhr.send();  
+      });
+
+
+    </script>
+    <!-- <script src="printResults.js"></script> -->
+  </body>
+</html>
